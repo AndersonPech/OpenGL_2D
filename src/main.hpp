@@ -36,6 +36,7 @@ struct SpaceShip {
     GLuint vao = 2;
     GLuint vbo = 2;
     GLuint ebo = 1;
+    std::vector<float> triangles;
     glm::mat4 translate = glm::mat4(1);
     glm::mat4 rotate = glm::mat4(1);
 

@@ -4,7 +4,7 @@
 Stars make_stars() {
     Stars star;
     std::vector<glm::vec3> star_Position;
-    for (int i = 0; i < 10000; ++i) {
+    for (int i = 0; i < 100000; ++i) {
         float x = (rand() % 200 + (-100));
         x = x / 100;
         float y = (rand() % 200 + (-100));
