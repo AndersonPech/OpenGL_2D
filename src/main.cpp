@@ -16,15 +16,16 @@
 #include <glm/gtc/type_ptr.hpp>
 
 #include <chicken3421/chicken3421.hpp>
+#include <unistd.h>
 
 typedef std::chrono::high_resolution_clock Clock;
 
-const char *VERT_PATH = "res/shaders/shader.vert";
+const char *VERT_PATH = "res/shaders/vert1.glsl";
 const char *VERT_PATH2 = "res/shaders/vert2.glsl";
 const char *VERT_PATH3 = "res/shaders/vert3.glsl";
-const char *FRAG_PATH = "res/shaders/shader.frag";
-const char *FRAG_PATH2 = "res/shaders/shader2.frag";
-const char *FRAG_PATH3 = "res/shaders/shade3.glsl";
+const char *FRAG_PATH = "res/shaders/shader1.glsl";
+const char *FRAG_PATH2 = "res/shaders/shader2.glsl";
+const char *FRAG_PATH3 = "res/shaders/shader3.glsl";
 
 
 struct image_t {
@@ -166,7 +167,7 @@ int main() {
 
     // create our shader program that will run on the GPU
     GLuint program = chicken3421::make_program(vert_shader, frag_shader);
-    GLuint white_program = chicken3421::make_program(vert_shader2, frag_shader_white);
+    GLuint stars = chicken3421::make_program(vert_shader2, frag_shader_white);
     GLuint space_ship = chicken3421::make_program(vert_shader3, frag_shader_falcon);
     
     //Delete shaders
@@ -185,14 +186,14 @@ int main() {
 
     GLint transform_loc = glGetUniformLocation(program, "transform");
     GLint transform_loc2 = glGetUniformLocation(space_ship, "transform");
-    GLuint texture1 = make_texture("res/shaders/Image/oglass.jpg");
+    GLint transform_loc3 = glGetUniformLocation(stars, "transform");
+    GLuint texture1 = make_texture("res/shaders/Image/red.jpg");
     GLuint texture2 = make_texture("res/shaders/Image/blue.jpg");
     GLuint texture3 = make_texture("res/shaders/Image/ship.png");
 
     glfwSetWindowUserPointer(window, &ship);
     glfwSetKeyCallback(window, on_key_press);
 
-    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
     int current_buffer = texture2;
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
@@ -200,38 +201,50 @@ int main() {
     
      // Render loop
     while(!glfwWindowShouldClose(window)) {
+        float timeValue = glfwGetTime();
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        //Draw the stars (anything more than 10000 gives weird behaviour
+        //Draw the stars (anything more than 100000 gives weird behaviour
         //if program doesn't work reduce the number of stars)
-        glUseProgram(white_program);
+        glUseProgram(stars);
         glBindVertexArray(star.vao);
         glEnable(GL_PROGRAM_POINT_SIZE);
-        glDrawArrays(GL_POINTS, 0, 10000);
+        glDrawArrays(GL_POINTS, 0, 100000);
+        float scale_variable = sin(timeValue) / 4.0f + 2.0f;
+        glm::mat4 scaler = {
+            scale_variable ,0 ,0 ,0, 
+            0 , scale_variable ,0 ,0, 
+            0 ,0 , scale_variable ,0, 
+            0 ,0 ,0, 1, 
+        }; 
+        
+        glUniformMatrix4fv(transform_loc3, 1, GL_FALSE, glm::value_ptr(scaler));
 
         ///Draw the sun
         glUseProgram(program);
         glBindVertexArray(circle.vao);
-        
+
+
         glBindBuffer(GL_ARRAY_BUFFER, circle.vbo);
 
+        glm::mat4 rotation = glm::mat4(1);
+        rotation = glm::rotate(rotation, (float) glfwGetTime() / 20.0f, glm::vec3(0, 0, 1));
+        glUniformMatrix4fv(transform_loc, 1, GL_FALSE, glm::value_ptr(rotation));
+
         //Change the colour of the star overtime
-        float timeValue = glfwGetTime();
         float blueValue = sin(timeValue) / 2.0f + 0.6f;
         if (blueValue < 0.5f) {
             blueValue = 0.5f;
         } 
-        
-        std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-        int duration = std::chrono::duration_cast<std::chrono::seconds>(end - begin).count();
 
-        if ((duration % 10) == 0.0f) {
+        if (((int)timeValue % 20) == 0) {
             if (current_buffer == texture2) {
                 current_buffer = texture1;
             } else {
                 current_buffer = texture2;
             }
+            sleep(1);
         } 
         glBindTexture(GL_TEXTURE_2D, current_buffer);
         
@@ -243,7 +256,6 @@ int main() {
         //Rotate ship and translate
         glm::mat4 transform = ship.translate * ship.rotate; 
         
-        glUniformMatrix4fv(transform_loc, 1, GL_FALSE, glm::value_ptr(transform));
         glEnable(GL_BLEND); 
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
@@ -263,7 +275,7 @@ int main() {
 
     //Delete all the programs
     glDeleteProgram(program);
-    glDeleteProgram(white_program);
+    glDeleteProgram(stars);
     glDeleteProgram(space_ship);
 
     glfwTerminate();
