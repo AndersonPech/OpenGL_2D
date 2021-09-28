@@ -238,7 +238,7 @@ int main() {
             blueValue = 0.5f;
         } 
 
-        if (((int)timeValue % 20) == 0) {
+        if (((int)timeValue % 10) == 0) {
             if (current_buffer == texture2) {
                 current_buffer = texture1;
             } else {
