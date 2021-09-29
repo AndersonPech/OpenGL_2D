@@ -4,7 +4,9 @@
 #include <iostream>
 #include "main.hpp"
 #include <stb/stb_image.h>
+#include <bits/stdc++.h>
 #include <stdlib.h> 
+#include <sstream>  
 
 #include <cstdlib>
 #include <chrono>
@@ -14,6 +16,7 @@
 #include <glm/glm.hpp>
 #include <glm/ext/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <unordered_map>
 
 #include <chicken3421/chicken3421.hpp>
 #include <unistd.h>
@@ -34,6 +37,8 @@ struct image_t {
     int n_channels;
     void *data;
 };
+
+std::unordered_map<std::string, GLint> explosions_key_frames;
 
 /**
  * Load image. Taken from tutorial
@@ -61,7 +66,9 @@ void delete_image(image_t &img) {
     img.n_channels = 0;
 }
 
-//Load textures, taken from tutorial code
+/**
+ * Make texture
+ */
 GLuint make_texture(const std::string &path) {
     image_t img = load_image(path);
 
@@ -89,7 +96,9 @@ GLuint make_texture(const std::string &path) {
     return tex;
 }
 
-//Load the shaders. Taken from Tutorial code.
+/**
+ * Load shader
+ */
 GLuint load_shader(const std::string &path, GLenum type) {
     std::string source = chicken3421::read_file(path);
     const char* src = source.data();
@@ -101,7 +110,9 @@ GLuint load_shader(const std::string &path, GLenum type) {
 }
 
 
-// process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
+/* process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
+*
+*/
 void processInput(GLFWwindow *window)
 {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
@@ -133,13 +144,60 @@ void on_key_press(GLFWwindow *win, int key, int scancode, int action, int mods) 
             mesh->translate = glm::translate(mesh->translate, glm::vec3(0.01, 0, 0));
             break;
         case GLFW_KEY_Q:
-            mesh->rotate = glm::rotate(mesh->rotate, (float) M_PI/6, glm::vec3(0, 0, 1));
+            mesh->rotate = glm::rotate(mesh->rotate, (float) M_PI/12, glm::vec3(0, 0, 1));
             break;
         case GLFW_KEY_E:
 
-            mesh->rotate = glm::rotate(mesh->rotate, (float) -M_PI/6, glm::vec3(0, 0, 1));
+            mesh->rotate = glm::rotate(mesh->rotate, (float) -M_PI/12, glm::vec3(0, 0, 1));
         default:
             break;
+    }
+}
+
+/**
+ * Load GLuin code from hashmap
+ */ 
+GLuint loadExplosionKey(int key) {
+    std::string number = std::to_string(key);
+    if (key < 10) {
+        std::string zero = "0";
+        number = zero + number;
+    }
+
+    std::string frame = "frame_";
+    frame = frame + number;
+    std::string end = "_delay-0.07s.gif";
+    frame = frame + end;
+    std::cout << frame;
+    std::string position = "res/shaders/Image/Explosion/";
+    position = position + frame;
+    std::unordered_map<std::string, GLint>::const_iterator got = explosions_key_frames.find(position);
+    if (got != explosions_key_frames.end()) {
+        return got->second;
+    } else {
+        return INT_MAX;
+    }
+}
+
+/**
+ * Save memory by loading textures into hashmap
+ */ 
+void createExplosionTextures() {
+    for (int i = 0; i < 89; ++i) {
+        std::string number = std::to_string(i);
+        if (i < 10) {
+            std::string zero = "0";
+            number = zero + number;
+        }
+
+        std::string frame = "frame_";
+        frame = frame + number;
+        std::string end = "_delay-0.07s.gif";
+        frame = frame + end;
+        std::string position = "res/shaders/Image/Explosion/";
+        position = position + frame;
+        GLint stub = make_texture(position);
+        explosions_key_frames.insert({position, stub});
     }
 }
 
@@ -187,31 +245,37 @@ int main() {
     GLint transform_loc = glGetUniformLocation(program, "transform");
     GLint transform_loc2 = glGetUniformLocation(space_ship, "transform");
     GLint transform_loc3 = glGetUniformLocation(stars, "transform");
-    GLuint texture1 = make_texture("res/shaders/Image/red.jpg");
-    GLuint texture2 = make_texture("res/shaders/Image/blue.jpg");
-    GLuint texture3 = make_texture("res/shaders/Image/ship.png");
+    GLuint texture1 = make_texture("res/shaders/Image/star.png");
+    GLuint texture3 = make_texture("res/shaders/Image/x.png");
+    createExplosionTextures();
 
     glfwSetWindowUserPointer(window, &ship);
     glfwSetKeyCallback(window, on_key_press);
 
-    int current_buffer = texture2;
+    //If death star doesnt spawn change this number
+    int current_buffer = INT_MAX;
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 
-    
+    float scaler_zoom = 0.0f;
+    int explosion_key_frame = 0;
+    bool explosion = false;
+
      // Render loop
     while(!glfwWindowShouldClose(window)) {
         float timeValue = glfwGetTime();
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
-
+        usleep(1000);
         //Draw the stars (anything more than 100000 gives weird behaviour
         //if program doesn't work reduce the number of stars)
         glUseProgram(stars);
         glBindVertexArray(star.vao);
         glEnable(GL_PROGRAM_POINT_SIZE);
-        glDrawArrays(GL_POINTS, 0, 100000);
-        float scale_variable = sin(timeValue) / 4.0f + 2.0f;
+        glDrawArrays(GL_POINTS, 0, 10000);
+        float scale_variable = 1.0f + scaler_zoom;
+        scaler_zoom = scaler_zoom + 0.0001f;
+        std::cout << scaler_zoom << std::endl;
         glm::mat4 scaler = {
             scale_variable ,0 ,0 ,0, 
             0 , scale_variable ,0 ,0, 
@@ -232,24 +296,38 @@ int main() {
         rotation = glm::rotate(rotation, (float) glfwGetTime() / 20.0f, glm::vec3(0, 0, 1));
         glUniformMatrix4fv(transform_loc, 1, GL_FALSE, glm::value_ptr(rotation));
 
-        //Change the colour of the star overtime
-        float blueValue = sin(timeValue) / 2.0f + 0.6f;
-        if (blueValue < 0.5f) {
-            blueValue = 0.5f;
-        } 
+        //Change the colour of the star overtime if in explosion mode    
+        int vertexColorLocation = glGetUniformLocation(program, "ourColor");
+        if (current_buffer != texture1) {
+            float blueValue = sin(timeValue) / 2.0f + 0.8f;
+            glUniform4f(vertexColorLocation, 1.0f, blueValue, 0.0f, 1.0f);
+        } else {
+            glUniform4f(vertexColorLocation, 0.8f, 0.8f, 0.8f, 1.0f);
+        }
 
-        if (((int)timeValue % 10) == 0) {
-            if (current_buffer == texture2) {
+        if (((int)timeValue % 20) == 0) {
+            if (current_buffer != texture1) {
                 current_buffer = texture1;
+                explosion = false;
             } else {
-                current_buffer = texture2;
+                explosion = true;
             }
+            scaler_zoom = 0.0f;
+            //To prevent flickering
             sleep(1);
         } 
+
+        if (explosion) {
+            current_buffer = loadExplosionKey(explosion_key_frame);
+            explosion_key_frame += 1;
+            if (current_buffer == INT_MAX) {
+                current_buffer = 0;
+                explosion_key_frame = 0;
+            }
+        }
+
+
         glBindTexture(GL_TEXTURE_2D, current_buffer);
-        
-        int vertexColorLocation = glGetUniformLocation(program, "ourColor");
-        glUniform4f(vertexColorLocation, 0.5f, blueValue, 1.0f, 0.5f);
         glDrawArrays(GL_TRIANGLE_FAN, 0, circle.n_verts);
 
 
