@@ -274,7 +274,7 @@ int main() {
         glEnable(GL_PROGRAM_POINT_SIZE);
         glDrawArrays(GL_POINTS, 0, 10000);
         float scale_variable = 1.0f + scaler_zoom;
-        scaler_zoom = scaler_zoom + 0.0001f;
+        scaler_zoom = scaler_zoom + 0.001f;
         std::cout << scaler_zoom << std::endl;
         glm::mat4 scaler = {
             scale_variable ,0 ,0 ,0, 
@@ -305,7 +305,7 @@ int main() {
             glUniform4f(vertexColorLocation, 0.8f, 0.8f, 0.8f, 1.0f);
         }
 
-        if (((int)timeValue % 20) == 0) {
+        if (((int)timeValue % 15) == 0) {
             if (current_buffer != texture1) {
                 current_buffer = texture1;
                 explosion = false;

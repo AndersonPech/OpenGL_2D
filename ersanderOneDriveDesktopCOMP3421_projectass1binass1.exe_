@@ -1,0 +1,186 @@
+[33mcommit 21d21a261e9b76ea0b9bb750a231f247218a6907[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Anderson Pech <andersonpech@gmail.com>
+Date:   Wed Sep 29 17:45:54 2021 +1000
+
+    replaced star with death star, added 88 key animation explosion frames
+
+[33mcommit b66f3bca23efcb4b9d18658ba435f9953274672a[m
+Author: Anderson Pech <andersonpech@gmail.com>
+Date:   Tue Sep 28 23:09:34 2021 +1000
+
+    finalised
+
+[33mcommit 9539e33c9e0ac145781a074b53ec3bd2e71c61ab[m
+Author: Anderson Pech <andersonpech@gmail.com>
+Date:   Tue Sep 28 22:31:41 2021 +1000
+
+    adjusted speed
+
+[33mcommit 7cca59e46b0d8d55b34af38019e774c121f42145[m
+Merge: e3b44dd 43b7845
+Author: Anderson Pech <andersonpech@gmail.com>
+Date:   Tue Sep 28 22:30:55 2021 +1000
+
+    Merge branch 'master' of gitlab.cse.unsw.EDU.AU:COMP3421/21T3/students/z5308387/ass1
+
+[33mcommit e3b44ddce4277ff8845f2870a6707be7986ad0b1[m
+Author: Anderson Pech <andersonpech@gmail.com>
+Date:   Tue Sep 28 22:30:44 2021 +1000
+
+    added sleep to prevent static
+
+[33mcommit 43b7845be6ba8cffb836252046d22c1786ebd077[m
+Author: Anderson Pech <anderson.pech@student.unsw.edu.au>
+Date:   Tue Sep 28 22:30:06 2021 +1000
+
+    Delete shader.vert
+
+[33mcommit 6e295fa604db0d4211209d3c91a9ee7088267c82[m
+Author: Anderson Pech <anderson.pech@student.unsw.edu.au>
+Date:   Tue Sep 28 22:30:02 2021 +1000
+
+    Delete shader.frag
+
+[33mcommit 3ef1d2a9667ffc2fef123874e793f641795d2e72[m
+Author: Anderson Pech <anderson.pech@student.unsw.edu.au>
+Date:   Tue Sep 28 22:29:58 2021 +1000
+
+    Delete shader2.frag
+
+[33mcommit af56ce161aa2aee56fa1ce5ce6e0a09108d5cea2[m
+Author: Anderson Pech <anderson.pech@student.unsw.edu.au>
+Date:   Tue Sep 28 22:29:46 2021 +1000
+
+    Delete shade3.glsl
+
+[33mcommit 2f2f517627733aa885c85c34737b88bf713a941c[m
+Author: Anderson Pech <andersonpech@gmail.com>
+Date:   Tue Sep 28 22:29:16 2021 +1000
+
+    replaced shader
+
+[33mcommit 7ece36b53f8994748937921093ddc09bec54b7fc[m
+Author: Anderson Pech <andersonpech@gmail.com>
+Date:   Tue Sep 28 22:26:00 2021 +1000
+
+    replaced shader
+
+[33mcommit 5777f87aacdbd0388768dfc9aef91dd83cc6ee40[m
+Merge: 6bccb4d efa8b75
+Author: Anderson Pech <windows_anderson@DESKTOP-31BER0U.localdomain>
+Date:   Tue Sep 28 16:56:38 2021 +1000
+
+    Merge branch 'master' of gitlab.cse.unsw.EDU.AU:COMP3421/21T3/students/z5308387/ass1
+    necessary
+
+[33mcommit 6bccb4dae367888b72afb360ee537da05fd05b8f[m
+Author: Anderson Pech <windows_anderson@DESKTOP-31BER0U.localdomain>
+Date:   Tue Sep 28 16:56:25 2021 +1000
+
+    transformation
+
+[33mcommit efa8b753f594cd78a1dfa138b0586e70a46f69b4[m
+Merge: 51f9a93 145859c
+Author: COMP6080 Bot <cs6080@cse.unsw.edu.au>
+Date:   Tue Sep 21 20:27:45 2021 +1000
+
+    Merge changes from starter code into 'master'
+
+[33mcommit 145859c94645696f96ff9cb88b5f13a0f1518f96[m
+Author: Simon Haddad <simon.haddad.41430@gmail.com>
+Date:   Tue Sep 21 19:50:37 2021 +1000
+
+    Added more helpful dependency-fetch message (for forced redeployment)
+
+[33mcommit 51f9a93db0077c5185c724c8ac34591a9595d194[m
+Merge: e5ccca0 b3ebee5
+Author: COMP6080 Bot <cs6080@cse.unsw.edu.au>
+Date:   Tue Sep 21 12:52:19 2021 +1000
+
+    Merge changes from starter code into 'master'
+
+[33mcommit b3ebee5795a564165fbd20ef9ce84284897817c9[m
+Author: Simon Haddad <simon.haddad.41430@gmail.com>
+Date:   Tue Sep 21 12:27:29 2021 +1000
+
+    Removed reliance on assimp because it caused too many problems
+
+[33mcommit e5ccca0fee10a3fecb919e720802155da9cb0b75[m
+Merge: 3d5dde7 4ac7fdf
+Author: COMP6080 Bot <cs6080@cse.unsw.edu.au>
+Date:   Mon Sep 20 17:18:47 2021 +1000
+
+    Merge changes from starter code into 'master'
+
+[33mcommit 4ac7fdfed8bb9772869d17624748d95b2ff2a7ce[m
+Author: Simon Haddad <simon.haddad.41430@gmail.com>
+Date:   Mon Sep 20 16:55:11 2021 +1000
+
+    Updated spec to version 1.2
+
+[33mcommit 70f5c3e0ce710275ba40c68c760290d1a418518c[m
+Author: Simon Haddad <simon.haddad.41430@gmail.com>
+Date:   Mon Sep 20 15:28:05 2021 +1000
+
+    Remove quotation marks around the cmake configuration command
+
+[33mcommit 82978dcdea15066cbc0cf4f13d74b00964574f15[m
+Author: Simon Haddad <simon.haddad.41430@gmail.com>
+Date:   Mon Sep 20 15:21:27 2021 +1000
+
+    Given up on dependency fetch via configuration. Run the provided scripts.
+
+[33mcommit 193a51ce5ec1ba49ff0543ed4a0e7187b7245dc7[m
+Merge: d20f5a4 e5065b3
+Author: Simon Haddad <simon.haddad.41430@gmail.com>
+Date:   Mon Sep 20 13:00:04 2021 +1000
+
+    Merge branch 'master' of gitlab.cse.unsw.EDU.AU:COMP3421/21T3/staff/repo-templates/ass1
+
+[33mcommit d20f5a4b60b54c6775aa0861b789583c2084968f[m
+Author: Simon Haddad <simon.haddad.41430@gmail.com>
+Date:   Mon Sep 20 12:59:01 2021 +1000
+
+    Added assimp to build system. simplified dependencies
+
+[33mcommit e09464774d56d0a31af688d2e7f42fffde4c787a[m
+Author: Simon Haddad <simon.haddad.41430@gmail.com>
+Date:   Sun Sep 19 18:59:05 2021 +1000
+
+    Added fix for unix
+
+[33mcommit e5065b34fd892195061a7635b419ed0ec219c47e[m
+Author: Marc Chee <m.chee@unsw.edu.au>
+Date:   Sun Sep 19 18:37:30 2021 +1000
+
+    Update README.md to add the name JUSTIFICATION.md to the Documentation Template
+
+[33mcommit 67b97c12215119bceafb67455cf654c5d65ea405[m
+Author: Simon Haddad <simon.haddad.41430@gmail.com>
+Date:   Sun Sep 19 17:18:25 2021 +1000
+
+    Actually pushing the fix
+
+[33mcommit 206dd30da863c255e61434d971f60255b506cd14[m
+Author: Simon Haddad <simon.haddad.41430@gmail.com>
+Date:   Sun Sep 19 17:11:22 2021 +1000
+
+    Fix for VS Code with the build system
+
+[33mcommit 3d5dde7159b9b6b2f89b3f031eb7665a1bf7f0ab[m
+Author: COMP6080 Bot <cs6080@cse.unsw.edu.au>
+Date:   Sat Sep 18 20:37:12 2021 +1000
+
+    Released aa0c4582bbcc8d17faaeed27c915b7c83735b9c4 to COMP3421/21T3/students/z5308387
+
+[33mcommit aa0c4582bbcc8d17faaeed27c915b7c83735b9c4[m
+Author: Simon Haddad <simon.haddad.41430@gmail.com>
+Date:   Sat Sep 18 19:16:47 2021 +1000
+
+    Ready for 21T3
+
+[33mcommit 1ba05c92ab2c6dc52140b7eba3712b84b52f2ab1[m
+Author: Simon Haddad <simon.haddad@unsw.edu.au>
+Date:   Fri Sep 17 15:56:36 2021 +1000
+
+    Initial commit

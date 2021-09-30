@@ -6,13 +6,14 @@ If you think any of the questions within the sections are not applicable, please
 
 ### How have you fulfilled this requirement?
 
-Runs on: Windows 10 64x using the setup provided in the specifications
+Runs on: Windows 10/11 64x using the setup provided in the specifications
 
 ### When your application is run, what should the tutor look for or do to see that you have fulfilled this requirement? 
 
 A x-wing in the center that can be mvoed by q,w,e,a,s,d. 
-The death star in the background should change colours after every 15 seconds. 
-The stars also move.
+The death star in the background should explode after every 15 seconds. 
+The explosions should be animated and glows from dark red to light orange. 
+The stars also move by increasing its scale. 
 
 
 ### Where in the code should tutors look to see that you've fulfilled this requirement?
