@@ -34,8 +34,9 @@ The ship, space, stars and death star. Shaders loaded in to explosion where it c
 ### Where in the code should tutors look to see that you've fulfilled this requirement?
 
 Main function. create explosion textures and load explosion key functions. Shader1 shader2 shader3 glsl files.
-Uniform ourcolour is used to give the explosion a glowing effect in shader2.glsl.
-GL_BLEND used to make rectangle transparent from the texture.
+Uniform ourcolour is used to give the explosion a glowing effect in shader2.glsl. Ourcolour is changed in the render loop (line 299) in main.cpp depending on which texture is loaded. If death star it is gray, if explosion it is a changing red. 
+GL_BLEND used to make rectangle transparent from the texture for the x wing.
+
 
 ## Section 3: Creation and Use of 2D Shapes
 
@@ -49,6 +50,8 @@ Dots for the stars.
 ### When your application is run, what should the tutor look for or do to see that you have fulfilled this requirement?
 
 Images on screen. Stars, death star and xwing. X wing is transparent so rectangle should not be seen. 
+The death star object rotates using matrix transformations. The stars is scaled by matrix transformations to make it appear as if they're moving.
+The x wing can be moved by q.w.a.s.d.
 
 ### Where in the code should tutors look to see that you've fulfilled this requirement?
 
@@ -56,6 +59,10 @@ stars, ship and circle files.
 shader1, shader2, shader3 glsl files.
 main.hpp header file for declaration of structs.
 In render loop GL_BLEND is used to make the rectangle transparent for the x wing.
+onkeypressed function in main.cpp used to take user input for the x wing's movement. 
+Circle object rotates by using sin(glfwgettime). 
+A variable called scaler_zoom is incremented within the render loop to gradually increase the scale for the stars. 
+The render loop also resets the scaler_zoom variable after 15 seconds to reset the scale for the stars.
 
 ## Section 4: Use of Textures
 
@@ -75,7 +82,8 @@ Render loop in main and initialisation. Textures loaded before the render loop. 
 by swapping the textures.
 vert1 vert2 vert3 and shader1 shader2 shader3 to declare the the textures. 
 3 different textures were used due to the 3 objects.
-Circle and ship files have texture coordinates and loaded accordingly into vbo. 
+Circle and ship files have texture coordinates and loaded accordingly into vbo in their respective files with the same names.
+
 
 ### Section 5: Subjective Mark
 
@@ -87,7 +95,7 @@ Stars move giving a "hyperspeed" visual made famous by the star wars movies.
 
 ### When your application is run, what should the tutor look for or do to see that you have fulfilled this requirement?
 
-Stars, death star, explosion changing colours. Star moving towards. Death star rotating.
+Stars, death star, explosion changing colours. Star moving towards. Death star rotating. Death star explodes after 15 seconds.
 
 ### Where in the code should tutors look to see that you've fulfilled this requirement?
 
