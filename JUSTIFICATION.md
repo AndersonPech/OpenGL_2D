@@ -81,8 +81,9 @@ Circle and ship files have texture coordinates and loaded accordingly into vbo.
 
 ### How have you fulfilled this requirement?
 
-Uses points and blending and changing of colours. Death star and explosion to emulate the star wars a new hope when luke destroys death star.
-Explosion is animated. Blends in to background. Stars move giving a "hyperspeed" visual.
+Uses points and blending and changing of colours. Death star and explosion to emulate the scene in star wars a new hope when luke destroys the death star.
+Explosion is animated. Blends in to background. 
+Stars move giving a "hyperspeed" visual made famous by the star wars movies.
 
 ### When your application is run, what should the tutor look for or do to see that you have fulfilled this requirement?
 
