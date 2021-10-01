@@ -18,7 +18,7 @@ The stars also move by increasing its scale.
 
 ### Where in the code should tutors look to see that you've fulfilled this requirement?
 
-Circle, main, ship, star. Changing of textures in render loop.
+Circle, main, ship, star structs and files. Changing of textures in render loop.
 
 
 ## Section 2: Visibility & Shaders
@@ -29,41 +29,46 @@ Images appear on screen
 
 ### When your application is run, what should the tutor look for or do to see that you have fulfilled this requirement?
 
-The ship, space, stars and sun.
+The ship, space, stars and death star. Shaders loaded in to explosion where
+it changes colour.
 
 ### Where in the code should tutors look to see that you've fulfilled this requirement?
 
-main function
+main function. create explosion textures and load explosion key. 
+
 ## Section 3: Creation and Use of 2D Shapes
 
 
 ### How have you fulfilled this requirement?
 
 2 rectangles to hold the spaceship (originally tried to fit millenium falcon but its scaling was off).
-Circle for the sun.
-Dots for the stars
+Circle for the death star and explosion.
+Dots for the stars.
 
 ### When your application is run, what should the tutor look for or do to see that you have fulfilled this requirement?
 
-Images on screen
+Images on screen. Stars, death star and xwing.
 
 ### Where in the code should tutors look to see that you've fulfilled this requirement?
 
-stars, ship and circle
+stars, ship and circle files.
+shader1, shader2, shader3 glsl files.
 
 ## Section 4: Use of Textures
 
 ### How have you fulfilled this requirement?
 
-in main.cpp
+in main.cpp more as well as load explosion key and create explosion textures.
+explosion textures are loaded in a hashmap to prevent remaking the same texture.
 
 ### When your application is run, what should the tutor look for or do to see that you have fulfilled this requirement?
 
-The sun is off a glassy texture (blue and orange). Spaceship in centre.
+After 15 seconds the death star should change to an explosion. The explosion should be animated. After 15 seconds the explosion will go back to the death star texture.
 
 ### Where in the code should tutors look to see that you've fulfilled this requirement?
 
-Render loop in main and initialisation.
+Render loop in main and initialisation. Load explosion key to create the animation
+by swapping the textures.
 
 ### Section 5: Subjective Mark
 
@@ -73,11 +78,11 @@ Uses points and blending and changing of colours.
 
 ### When your application is run, what should the tutor look for or do to see that you have fulfilled this requirement?
 
-Stars, sun changing colours.
+Stars, death star, explosion changing colours.
 
 ### Where in the code should tutors look to see that you've fulfilled this requirement?
 
-Main function, stars.
+Main function, stars, circle, ship files.
 
 ## Use of External Libraries
 
