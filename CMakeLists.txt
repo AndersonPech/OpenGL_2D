@@ -15,6 +15,7 @@ find_package(glad REQUIRED HINTS ${PROJECT_SOURCE_DIR}/lib)
 find_package(glfw3 REQUIRED HINTS ${PROJECT_SOURCE_DIR}/lib)
 find_package(glm REQUIRED HINTS ${PROJECT_SOURCE_DIR}/lib)
 find_package(stb REQUIRED HINTS ${PROJECT_SOURCE_DIR}/lib)
+find_package(tinyobjloader REQUIRED HINTS ${PROJECT_SOURCE_DIR}/lib)
 find_package(chicken3421 REQUIRED HINTS ${PROJECT_SOURCE_DIR}/lib)
 
 set(COMMON_LIBS glad::glad glm::glm glfw stb chicken3421)
