@@ -113,31 +113,3 @@ Some example text that you can use in the document:
 Remember to explain any references you are using in case they are too obscure for your tutors to know them. You can include links here to other artworks or pop culture references you have used. If you have used any images for your textures, they must be credited appropriately.
 
 
-## How to submit
-
-To submit this assignment, you must submit your entire project folder, based on the repo cloned for the start of the assignment.
-
-
-## Use of External Code and Libraries
-
-If you wish to use any external libraries with the assignment, you do so at your own risk. If you do add any external code to the assignment project, you must clearly state in your submitted document what you are using and exactly how it integrates into the project as well as exactly what functionality that library adds.
-
-Also note that you do not have any control over what system will be used to test your assignment. We have been very careful with the projects we've given you to make sure they work on Windows, Linux and Mac and all our tutors' testing environments. We obviously cannot give that guarantee for any external libraries, so bear in mind that there's a chance that including external libraries will cause a project to fail even the simplest tests and potentially cost a great deal of marks.
-
-## Due Date: Friday 1st October 5pm
-
-Late penalty is 20% off maximum mark for every 24 hours after 5pm. This means if you hand something in that's between 1 and 2 days late, your maximum mark will be lowered to 60%. Your mark itself will not be changed if it's lower than the new maximum.
-
-We're not trying to be harsh with these deadlines, so if you have a reason why you weren't able to hand something in in time, you can contact your tutor for an extension and we'll be quite friendly with short extensions.
-
-### Special Consideration
-If you have any issues that stop you from being able to complete this assignment, you may be eligible for Special Consideration through UNSW. Please see https://student.unsw.edu.au/special-consideration if you need more information. Some of you may already have let us know that you have Special Consideration in advance. If this is the case and you would like to make use of any extensions you have been granted, you can contact your tutor.
-
-### Plagiarism and Academic Misconduct
-This assignment is an individual assessment and is intended to be completed and submitted by an individual student. If you would like more information about Plagiarism please see https://student.unsw.edu.au/plagiarism .
-
-However, the majority of the technical skills and work involved in the assignment is from the course's tutorials, so you are free to discuss the requirements and the techniques (and are encouraged to do so on the course Discord where you can get advice from course staff).
-
-It is not considered plagiarism for a student to submit code that they have worked on in tutorials for this assignment. It is also not considered plagiarism for students to help each other review and debug code in this assignment.
-
-If any two assignments provide identical visual output, they will be investigated for code similarities to determine if the work is definitely individual and similarities are coincidental.
